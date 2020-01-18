@@ -5,14 +5,14 @@ import './App.css';
 import './index'
 import {Route, NavLink} from 'react'
 import Axios from 'axios';
+import Character from './Character'
 
 
-function App extends React.Component {
+class App extends React.Component {
   constructor(){
     super()
-
     this.state={
-      gotCharacter:[]
+      gotCharacters: []
     }
   }
 // api call
@@ -20,32 +20,28 @@ function App extends React.Component {
 fetchGOTCharacters= async()=> {
   const resp = await Axios.get('https://www.anapioficeandfire.com/api/characters?page=1&pageSize=50')
   const data = resp.data
-  this.setState({gotCharacter})
+  this.setState({
+    gotCharacters: data
+  })
 }
 
 async componentDidMount(){
   await this.fetchGOTCharacters()
 }
 
-
+render(){
+  console.log(this.state)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       {this.state.gotCharacters.map((gotCharacter, index)=> { 
+         return(
+            <Character key={index} got={gotCharacter} />
+         )})
+        }
     </div>
   );
+  }
+
 }
 
 export default App;

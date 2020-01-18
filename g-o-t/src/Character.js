@@ -6,6 +6,6 @@ function Character(props){
     <NavLink to={`/char/${props.index}`}>{props.got.name}</NavLink>
     )
 }
-
+// create links
 
 export default Character

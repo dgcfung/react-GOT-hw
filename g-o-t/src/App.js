@@ -42,7 +42,7 @@ render(){
         {/* call character component function and set equal to chracter from index # from API */}
         <Switch>
           <Route exact path="/char/:index" component={match => <CharDetail match={match} got={this.state.gotCharacters}/>} /> 
-          <Route exact path="/" component={()=>(<h1>hello</h1>)} />
+          {/* <Route exact path="/" component={()=>(<h1>hello</h1>)} /> */}
         </Switch>
         {/* create a bunch of urls to render new page on same page */}
 

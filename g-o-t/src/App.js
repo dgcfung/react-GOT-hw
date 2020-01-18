@@ -33,16 +33,16 @@ componentDidMount(){
 render(){
   return (
     <div className="App">
-       {this.state.gotCharacters.map((gotCharacter, index)=> { 
-         return(
-            <Character key={index} got={gotCharacter} index={index} />
-         )})
-        }
+      
 
         {/* call character component function and set equal to chracter from index # from API */}
         <Switch>
           <Route exact path="/char/:index" component={match => <CharDetail match={match} got={this.state.gotCharacters}/>} /> 
-          {/* <Route exact path="/" component={()=>(<h1>hello</h1>)} /> */}
+          <Route exact path="/" component={()=>(<div> {this.state.gotCharacters.map((gotCharacter, index)=> { 
+         return(
+            <Character key={index} got={gotCharacter} index={index} />
+         )})
+        }</div>)} />
         </Switch>
         {/* create a bunch of urls to render new page on same page */}
 

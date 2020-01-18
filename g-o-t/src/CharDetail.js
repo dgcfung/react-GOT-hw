@@ -1,4 +1,5 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 
 export default function CharDetail(props) {
     console.log(props.match)
@@ -7,7 +8,8 @@ export default function CharDetail(props) {
     return (
         <div>
                 {data && data.name||data && data.aliases}
-
+                {data && data.gender}
+         <NavLink to={`/`}>Back</NavLink>
         </div>
     )
 }

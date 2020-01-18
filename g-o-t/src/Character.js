@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import {Route, NavLink} from 'react'
+import React from 'react';
+import {NavLink} from 'react-router-dom'
 
 function Character(props){
-    console.log(props.got)
     return(
-    <div>{props.got.name}</div>
+    <NavLink to={`/char/${props.index}`}>{props.got.name}</NavLink>
     )
 }
 

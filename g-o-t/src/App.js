@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
-import logo from './logo.svg';
+import React from 'react';
+import {Switch, Route} from 'react-router-dom'
 import './App.css';
 import './index'
-import {Route, NavLink} from 'react'
 import Axios from 'axios';
 import Character from './Character'
+import CharDetail from './CharDetail'
 
 
 class App extends React.Component {
@@ -15,7 +14,7 @@ class App extends React.Component {
       gotCharacters: []
     }
     // this.handleClick = this.handleClick.bind(this);
-    this.gotCharacters=this.gotCharacters.bind(this);
+    // this.gotCharacters=this.gotCharacters.bind(this);
   }
 // api call
 
@@ -27,19 +26,26 @@ fetchGOTCharacters= async()=> {
   })
 }
 
-async componentDidMount(){
-  await this.fetchGOTCharacters()
+componentDidMount(){
+  this.fetchGOTCharacters()
 }
 
 render(){
-  console.log(this.state)
   return (
     <div className="App">
        {this.state.gotCharacters.map((gotCharacter, index)=> { 
          return(
-            <Character key={index} got={gotCharacter} />
+            <Character key={index} got={gotCharacter} index={index} />
          )})
         }
+
+        {/* call character component function and set equal to chracter from index # from API */}
+        <Switch>
+          <Route exact path="/char/:index" component={match => <CharDetail match={match} got={this.state.gotCharacters}/>} /> 
+          <Route exact path="/" component={()=>(<h1>hello</h1>)} />
+        </Switch>
+        {/* create a bunch of urls to render new page on same page */}
+
     </div>
   );
   }

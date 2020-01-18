@@ -14,6 +14,8 @@ class App extends React.Component {
     this.state={
       gotCharacters: []
     }
+    // this.handleClick = this.handleClick.bind(this);
+    this.gotCharacters=this.gotCharacters.bind(this);
   }
 // api call
 

@@ -7,8 +7,10 @@ export default function CharDetail(props) {
     let data = props.got[match]
     return (
         <div>
-                {data && data.name||data && data.aliases}
-                {data && data.gender}
+              <p>Name: {data && data.name||data && data.aliases}</p> 
+            <p>Gender:{data && data.gender}</p> 
+               <p>Born:{data && data.born}</p> 
+               <p>Died: {data.died}</p>
          <NavLink to={`/`}>Back</NavLink>
         </div>
     )

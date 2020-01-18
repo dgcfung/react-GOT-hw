@@ -6,7 +6,8 @@ export default function CharDetail(props) {
     let data = props.got[match]
     return (
         <div>
-            {data && data.name}
+                {data && data.name||data && data.aliases}
+
         </div>
     )
 }
